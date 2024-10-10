@@ -18,6 +18,7 @@ import { InfoModalComponent } from '../shared/info-modal/info-modal.component';
 import { ButtonComponent } from '../shared/button/button.component';
 import { Router } from '@angular/router';
 import { ConfirmationModalComponent } from '../shared/confirmation-modal/confirmation-modal.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'isdi-profile',
@@ -92,7 +93,9 @@ import { ConfirmationModalComponent } from '../shared/confirmation-modal/confirm
         <section class="form-control">
           <label>
             <span>Fecha de nacimiento</span>
-            <p>Fecha actual: {{ state.formatDate(currentUser.birthDate) }}</p>
+            <p>
+              Fecha actual: {{ currentUser.birthDate | date : 'shortDate' }}
+            </p>
             <input type="date" formControlName="birthDate" />
           </label>
         </section>
@@ -154,6 +157,7 @@ import { ConfirmationModalComponent } from '../shared/confirmation-modal/confirm
     InfoModalComponent,
     ButtonComponent,
     ConfirmationModalComponent,
+    DatePipe,
   ],
 })
 export default class ProfileComponent implements OnInit {
